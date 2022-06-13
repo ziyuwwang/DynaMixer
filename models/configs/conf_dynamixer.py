@@ -17,8 +17,9 @@ def dynamixer_s(pretrained=False, **kwargs):
     num_heads = [8, 16, 16, 16]
     mlp_ratios = [3, 3, 3, 3]
     embed_dims = [192, 384, 384, 384]
+    reduced_dims = [2, 2, 2, 2]
     model = VisionModel(layers, embed_dims=embed_dims, patch_size=7, transitions=transitions,
-                        resolutions=resolutions, num_heads=num_heads, mlp_ratios=mlp_ratios,
+                        resolutions=resolutions, num_heads=num_heads, reduced_dims=reduced_dims, mlp_ratios=mlp_ratios,
                         mlp_fn=DynaMixerBlock, **kwargs)
     model.default_cfg = default_cfgs['DynaMixer_S']
     return model
@@ -32,8 +33,9 @@ def dynamixer_m(pretrained=False, **kwargs):
     num_heads = [8, 8, 16, 16]
     mlp_ratios = [3, 3, 3, 3]
     embed_dims = [256, 256, 512, 512]
+    reduced_dims = [2, 2, 2, 2]
     model = VisionModel(layers, embed_dims=embed_dims, patch_size=7, transitions=transitions,
-                        resolutions=resolutions, num_heads=num_heads, mlp_ratios=mlp_ratios,
+                        resolutions=resolutions, num_heads=num_heads, reduced_dims=reduced_dims, mlp_ratios=mlp_ratios,
                         mlp_fn=DynaMixerBlock, **kwargs)
     model.default_cfg = default_cfgs['DynaMixer_M']
     return model
@@ -47,8 +49,9 @@ def dynamixer_l(pretrained=False, **kwargs):
     num_heads = [8, 16, 16, 16]
     mlp_ratios = [3, 3, 3, 3]
     embed_dims = [256, 512, 512, 512]
+    reduced_dims = [8, 8, 8, 8]
     model = VisionModel(layers, embed_dims=embed_dims, patch_size=7, transitions=transitions,
-                        resolutions=resolutions, num_heads=num_heads, mlp_ratios=mlp_ratios,
+                        resolutions=resolutions, num_heads=num_heads, reduced_dims=reduced_dims, mlp_ratios=mlp_ratios,
                         mlp_fn=DynaMixerBlock, **kwargs)
     model.default_cfg = default_cfgs['DynaMixer_L']
     return model
