@@ -1,5 +1,5 @@
 """
-ViP training and evaluating script
+DynaMixer training and evaluating script
 This script is modified from pytorch-image-models by Ross Wightman (https://github.com/rwightman/pytorch-image-models/)
 It was started from an early version of the PyTorch ImageNet example
 (https://github.com/pytorch/examples/tree/master/imagenet)
@@ -38,7 +38,7 @@ config_parser = parser = argparse.ArgumentParser(description='Training Config', 
 parser.add_argument('-c', '--config', default='', type=str, metavar='FILE',
                     help='YAML config file specifying default arguments')
 
-parser = argparse.ArgumentParser(description='ViP Training and Evaluating')
+parser = argparse.ArgumentParser(description='DynaMixer Training and Evaluating')
 
 # Dataset / Model parameters
 parser.add_argument('data', metavar='DIR',
@@ -49,7 +49,7 @@ parser.add_argument('--train-split', metavar='NAME', default='train',
                     help='dataset train split (default: train)')
 parser.add_argument('--val-split', metavar='NAME', default='validation',
                     help='dataset validation split (default: validation)')
-parser.add_argument('--model', default='vip_s7', type=str, metavar='MODEL',
+parser.add_argument('--model', default='dynamixer_s', type=str, metavar='MODEL',
                     help='Name of model to train (default: "countception"')
 parser.add_argument('--pretrained', action='store_true', default=False,
                     help='Start with pretrained version of specified network (if avail)')
