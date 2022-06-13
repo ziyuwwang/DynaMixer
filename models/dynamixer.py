@@ -15,12 +15,13 @@ class DynaMixerOp(nn.Module):
         self.out = nn.Linear(dim, dim)
         self.compress = nn.Linear(dim, num_head * reduced_dim)
         self.generate = nn.Linear(seq_len * reduced_dim, seq_len * seq_len)
+        self.activation = nn.Softmax(dim=-2)
 
     def forward(self, x):
         B, L, C = x.shape
         weights = self.compress(x).reshape(B, L, self.num_head, self.reduced_dim).permute(0, 2, 1, 3).reshape(B, self.num_head, -1)
         weights = self.generate(weights).reshape(B, self.num_head, L, L)
-        weights = nn.Softmax(dim=-2)(weights)
+        weights = self.activation(weights)
         x = x.reshape(B, L, self.num_head, C//self.num_head).permute(0, 2, 3, 1)
         x = torch.matmul(x, weights)
         x = x.permute(0, 3, 1, 2).reshape(B, L, C)
@@ -29,12 +30,12 @@ class DynaMixerOp(nn.Module):
 
 
 class DynaMixerBlock(nn.Module):
-    def __init__(self, dim, resolution=32, num_head=8, qkv_bias=False, qk_scale=None, attn_drop=0., proj_drop=0.):
+    def __init__(self, dim, resolution=32, num_head=8, reduced_dim=2, qkv_bias=False, qk_scale=None, attn_drop=0., proj_drop=0.):
         super().__init__()
         self.resolution = resolution
         self.num_head = num_head
-        self.mix_h = DynaMixerOp(dim, resolution, self.num_head, reduced_dim=2)
-        self.mix_w = DynaMixerOp(dim, resolution, self.num_head, reduced_dim=2)
+        self.mix_h = DynaMixerOp(dim, resolution, self.num_head, reduced_dim=reduced_dim)
+        self.mix_w = DynaMixerOp(dim, resolution, self.num_head, reduced_dim=reduced_dim)
         self.mlp_c = nn.Linear(dim, dim, bias=qkv_bias)
         self.reweight = Mlp(dim, dim // 4, dim * 3)
 
