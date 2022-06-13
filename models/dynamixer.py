@@ -21,7 +21,7 @@ class DynaMixerOp(nn.Module):
         weights = self.compress(x).reshape(B, L, self.num_head, self.reduced_dim).permute(0, 2, 1, 3).reshape(B, self.num_head, -1)
         weights = self.generate(weights).reshape(B, self.num_head, L, L)
         weights = nn.Softmax(dim=-2)(weights)
-        x = x.permute(0, 2, 3, 1)
+        x = x.reshape(B, L, self.num_head, C//self.num_head).permute(0, 2, 3, 1)
         x = torch.matmul(x, weights)
         x = x.permute(0, 3, 1, 2).reshape(B, L, C)
         x = self.out(x)
