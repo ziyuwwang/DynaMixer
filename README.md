@@ -23,7 +23,7 @@ This is a Pytorch implementation of our paper DynaMixer, [ICML 2022](https://icm
 torch==1.9.0
 torchvision>=0.10.0
 pyyaml
-timm
+timm==0.4.12
 fvcore
 apex if you use 'apex amp'
 ```
