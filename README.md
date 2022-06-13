@@ -45,7 +45,6 @@ data prepare: ImageNet with the following folder structure, you can extract imag
 │  │   ├── ......
 │  ├── ......
 ```
-Replace the data path in train.sh and jizhi_task_scripts/run_mlp.sh with your own.
 ## Training
 Command line for training on 8 GPUs (V100)
 
