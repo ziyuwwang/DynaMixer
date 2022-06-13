@@ -55,8 +55,6 @@ def basic_blocks(dim, index, layers, resolution, num_head, mlp_ratio=3., qkv_bia
 
 
 class VisionModel(nn.Module):
-    """ Vision Permutator
-    """
 
     def __init__(self, layers, img_size=224, patch_size=4, in_chans=3, num_classes=1000,
                  embed_dims=None, transitions=None, resolutions=None, num_heads=None, mlp_ratios=None, skip_lam=1.0,
