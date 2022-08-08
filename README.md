@@ -63,23 +63,13 @@ CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 ./distributed_train.sh 8 /path/to/imagenet 
 ## Reference
 You may want to cite:
 ```
-@article{DBLP:journals/corr/abs-2201-12083,
-  author    = {Ziyu Wang and
-               Wenhao Jiang and
-               Yiming Zhu and
-               Li Yuan and
-               Yibing Song and
-               Wei Liu},
-  title     = {DynaMixer: {A} Vision {MLP} Architecture with Dynamic Mixing},
-  journal   = {CoRR},
-  volume    = {abs/2201.12083},
-  year      = {2022},
-  url       = {https://arxiv.org/abs/2201.12083},
-  eprinttype = {arXiv},
-  eprint    = {2201.12083},
-  timestamp = {Wed, 02 Feb 2022 15:00:01 +0100},
-  biburl    = {https://dblp.org/rec/journals/corr/abs-2201-12083.bib},
-  bibsource = {dblp computer science bibliography, https://dblp.org}
+@inproceedings{wang2022dynamixer,
+  title={Dynamixer: a vision MLP architecture with dynamic mixing},
+  author={Wang, Ziyu and Jiang, Wenhao and Zhu, Yiming M and Yuan, Li and Song, Yibing and Liu, Wei},
+  booktitle={International Conference on Machine Learning},
+  pages={22691--22701},
+  year={2022},
+  organization={PMLR}
 }
 ```
 ## Acknowledgement
